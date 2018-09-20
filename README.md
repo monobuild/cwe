@@ -33,8 +33,11 @@ You can download the binary from the releases page or use the deb package to ins
 ### How does cwe work
 
 
-### What is in a .cew.env file
+### What is in a .cwe.env file
 
+#### Windows
+
+On Windows the file is called _cwe.env
 
 ### Customization
 
