@@ -31,9 +31,22 @@ You can download the binary from the releases page or use the deb package to ins
 ## Usage
 
 ### How does cwe work
+Let's start with a sample:
 
+    cwe --extra-env a=b c=d -- echo ${TEST} ${a} ${c}
+
+with a .cwe.env containing the following data:
+
+    env:
+      TEST: "Hello world!"
+
+the result is:
+
+    Hello World! b d
 
 ### What is in a .cwe.env file
+
+The .cwe.env file contains a dictionary named env and is serialized in YAML ( Yet Another Markup Language ).
 
 #### Windows
 

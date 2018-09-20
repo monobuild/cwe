@@ -51,7 +51,7 @@ release: ## Create release build
 
 build: ## build binary to .build folder
 	-rm -f .build/cwe
-	go build -o ".build/cwe" cmd/monobuild/main.go
+	go build -o ".build/cwe" cmd/cwe/main.go
 
 # Self-Documented Makefile see https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help:

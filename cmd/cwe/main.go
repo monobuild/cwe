@@ -15,11 +15,23 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"livingit.de/code/cwe"
 	"os"
 	"strings"
 )
+
+type arrayFlags []string
+
+func (i *arrayFlags) String() string {
+	return "my string representation"
+}
+
+func (i *arrayFlags) Set(value string) error {
+	*i = append(*i, value)
+	return nil
+}
 
 func main() {
 	args := os.Args[1:]
@@ -35,5 +47,29 @@ func main() {
 		fmt.Fprintln(os.Stderr, err.Error())
 		os.Exit(1)
 	}
+
+	if !strings.HasPrefix(program, "\"") {
+		if strings.Contains(program, " -- ") {
+			var myFlags arrayFlags
+
+			splittedArguments := strings.SplitN(program, " -- ", 2)
+			program = strings.TrimSpace(splittedArguments[1])
+
+			fs := flag.NewFlagSet("extraenv", flag.ExitOnError)
+			fs.Var(&myFlags, "extra-env", "Allow adding environment variable through cli")
+
+			err := fs.Parse(strings.Split(splittedArguments[0], " "))
+			if err != nil {
+				return
+			}
+			for _, v := range myFlags {
+				if strings.Contains(v, "=") {
+					splittedValue := strings.SplitN(v, "=", 2)
+					c.Add(splittedValue[0], splittedValue[1])
+				}
+			}
+		}
+	}
+
 	c.Run(program)
 }
