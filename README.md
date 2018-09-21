@@ -60,11 +60,7 @@ command line options, config file, etc
 
 |Version|Description|
 |---|---|
-
-## Built With
-
-* [Cobra](https://github.com/spf13/cobra) - A Commander for modern Go CLI interactions
-* [Viper](https://github.com/spf13/viper) - Go configuration with fangs
+|1.0.0|Initial version|
 
 ## Contributing
 
