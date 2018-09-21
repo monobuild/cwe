@@ -31,6 +31,7 @@ You can download the binary from the releases page or use the deb package to ins
 ## Usage
 
 ### How does cwe work
+
 Let's start with a sample:
 
     cwe --extra-env a=b c=d -- echo ${TEST} ${a} ${c}
@@ -43,6 +44,14 @@ with a .cwe.env containing the following data:
 the result is:
 
     Hello World! b d
+
+### Command line parameters
+
+`--extra-env` allows to add an additional environment variable using the commandline
+
+`--quiet` makes cwe no printing out own information
+
+Pass `--` before the real command to have cwe not parsing program's argument
 
 ### What is in a .cwe.env file
 

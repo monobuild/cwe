@@ -18,6 +18,7 @@ import (
 	"flag"
 	"fmt"
 	"livingit.de/code/cwe"
+	"livingit.de/code/cwe/cmd/cwe/methods"
 	"os"
 	"strings"
 )
@@ -48,6 +49,8 @@ func main() {
 		os.Exit(1)
 	}
 
+	var quiet bool
+
 	if !strings.HasPrefix(program, "\"") {
 		if strings.Contains(program, " -- ") {
 			var myFlags arrayFlags
@@ -57,6 +60,7 @@ func main() {
 
 			fs := flag.NewFlagSet("extraenv", flag.ExitOnError)
 			fs.Var(&myFlags, "extra-env", "Allow adding environment variable through cli")
+			fs.BoolVar(&quiet, "quiet", false, "Set to true to hide information")
 
 			err := fs.Parse(strings.Split(splittedArguments[0], " "))
 			if err != nil {
@@ -69,6 +73,12 @@ func main() {
 				}
 			}
 		}
+	}
+
+	if quiet {
+		c.Quiet = true
+	} else {
+		methods.PrintHeader()
 	}
 
 	c.Run(program)

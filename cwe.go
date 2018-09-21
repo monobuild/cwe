@@ -10,7 +10,8 @@ import (
 
 // CallWithEnvironment contains the additional environment variables to pass to the child process
 type CallWithEnvironment struct {
-	Environment map[string]string `yaml:"env"`
+	Environment map[string]string `yaml:"env"`   // Environment contains additional variables to add to the environment
+	Quiet       bool              `yaml:"quiet"` // Quiet toggles output of added variables
 }
 
 // NewCallWithEnvironment creates a new instance

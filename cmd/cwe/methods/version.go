@@ -27,7 +27,8 @@ var (
 
 func PrintHeader() {
 	if !viper.GetBool("quiet") {
-		fmt.Fprintln(os.Stdout, "monobuild")
+		fmt.Fprintln(os.Stdout, "cwe")
 		fmt.Fprintf(os.Stdout, "%s ( %s ) build on %s\n", versionNumber, commit, date)
+		fmt.Println()
 	}
 }
