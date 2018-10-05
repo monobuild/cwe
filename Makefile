@@ -53,6 +53,9 @@ build: ## build binary to .build folder
 	-rm -f .build/cwe
 	go build -o ".build/cwe" cmd/cwe/main.go
 
+install: build ## install binary to $GOPATH/bin
+	cp .build/cwe ${GOPATH}/bin/cwe
+
 # Self-Documented Makefile see https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help:
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)

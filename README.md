@@ -14,9 +14,9 @@ cwe is build with Go. So you need to have a Go environment up and running. Suppo
 
 To get the code of cwe you can run go get:
 
-    go get -u github.com/sascha-andres/cwe
+    go get -u github.com/monobuild/cwe
 
-Within `$GOPATH/src/github.com/sascha-andres/cwe` you should be able to run a test:
+Within `$GOPATH/src/github.com/monobuild/cwe` you should be able to run a test:
 
     go run cmd/cwe/main.go
 
@@ -31,6 +31,7 @@ You can download the binary from the releases page or use the deb package to ins
 ## Usage
 
 ### How does cwe work
+
 Let's start with a sample:
 
     cwe --extra-env a=b c=d -- echo ${TEST} ${a} ${c}
@@ -43,6 +44,14 @@ with a .cwe.env containing the following data:
 the result is:
 
     Hello World! b d
+
+### Command line parameters
+
+`--extra-env` allows to add an additional environment variable using the commandline
+
+`--quiet` makes cwe no printing out own information
+
+Pass `--` before the real command to have cwe not parsing program's argument
 
 ### What is in a .cwe.env file
 
@@ -60,6 +69,7 @@ command line options, config file, etc
 
 |Version|Description|
 |---|---|
+|1.0.1|Move namespace|
 |1.0.0|Initial version|
 
 ## Contributing

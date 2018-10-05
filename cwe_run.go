@@ -44,7 +44,13 @@ func (cwe *CallWithEnvironment) Run(program string) error {
 func (cwe *CallWithEnvironment) buildEnvironment() []string {
 	current := os.Environ()
 	for k, v := range cwe.Environment {
+		if !cwe.Quiet {
+			fmt.Println(fmt.Sprintf("%s: %s", k, v))
+		}
 		current = append(current, fmt.Sprintf("%s=%s", k, v))
+	}
+	if !cwe.Quiet {
+		fmt.Println()
 	}
 	return current
 }
