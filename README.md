@@ -14,9 +14,9 @@ cwe is build with Go. So you need to have a Go environment up and running. Suppo
 
 To get the code of cwe you can run go get:
 
-    go get -u github.com/sascha-andres/cwe
+    go get -u github.com/monobuild/cwe
 
-Within `$GOPATH/src/github.com/sascha-andres/cwe` you should be able to run a test:
+Within `$GOPATH/src/github.com/monobuild/cwe` you should be able to run a test:
 
     go run cmd/cwe/main.go
 
@@ -69,6 +69,7 @@ command line options, config file, etc
 
 |Version|Description|
 |---|---|
+|1.0.1|Move namespace|
 |1.0.0|Initial version|
 
 ## Contributing
