@@ -9,7 +9,7 @@ builds:
     goarch:
       - amd64
       - x86
-    ldflags: -extldflags "-static" -s -w -X github.com/sascha-andres/cwe/cmd/cwe/methods.versionNumber={{.Version}} -X github.com/sascha-andres/cwe/cmd/cwe/methods.commit={{.Commit}} -X github.com/cwe/cwe/cmd/cwe/methods.date={{.Date}}
+    ldflags: -extldflags "-static" -s -w -X github.com/monobuild/cwe/cmd/cwe/methods.versionNumber={{.Version}} -X github.com/monobuild/cwe/cmd/cwe/methods.commit={{.Commit}} -X github.com/monobuild/cwe/cmd/cwe/methods.date={{.Date}}
     env:
     - CGO_ENABLED=0
 

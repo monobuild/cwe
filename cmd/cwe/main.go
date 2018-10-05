@@ -17,10 +17,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"livingit.de/code/cwe"
-	"livingit.de/code/cwe/cmd/cwe/methods"
 	"os"
 	"strings"
+
+	"github.com/monobuild/cwe"
+	"github.com/monobuild/cwe/cmd/cwe/methods"
 )
 
 type arrayFlags []string
