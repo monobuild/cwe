@@ -3,7 +3,7 @@ package cwe
 import (
 	"fmt"
 	"github.com/pkg/errors"
-	"gopkg.in/yaml.v1"
+	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"os"
 )
