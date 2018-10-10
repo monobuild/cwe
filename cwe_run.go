@@ -10,7 +10,10 @@ import (
 
 // Run executes the program with the environment required
 func (cwe *CallWithEnvironment) Run(program string) error {
-	variables := cwe.buildEnvironment()
+	variables, err := cwe.buildEnvironment()
+	if err != nil {
+		return err
+	}
 	dir, err := os.Getwd()
 	if err != nil {
 		return err
@@ -21,10 +24,9 @@ func (cwe *CallWithEnvironment) Run(program string) error {
 		return err
 	}
 
-	env := variables
 	r := interp.Runner{
 		Dir: dir,
-		Env: env,
+		Env: variables,
 
 		Exec: interp.DefaultExec,
 		Open: interp.OpenDevImpls(interp.DefaultOpen),
@@ -41,16 +43,16 @@ func (cwe *CallWithEnvironment) Run(program string) error {
 }
 
 // buildEnvironment returns the amended env list
-func (cwe *CallWithEnvironment) buildEnvironment() []string {
-	current := os.Environ()
+func (cwe *CallWithEnvironment) buildEnvironment() (interp.Environ, error) {
+	env := os.Environ()
 	for k, v := range cwe.Environment {
 		if !cwe.Quiet {
 			fmt.Println(fmt.Sprintf("%s: %s", k, v))
 		}
-		current = append(current, fmt.Sprintf("%s=%s", k, v))
+		env = append(env, fmt.Sprintf("%s=%s", k, v))
 	}
 	if !cwe.Quiet {
 		fmt.Println()
 	}
-	return current
+	return interp.EnvFromList(env)
 }
